@@ -1,39 +1,42 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 
-project(qt_ros2_Joystick LANGUAGES CXX)
+project(CommandCenter VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
-find_package(rclcpp REQUIRED)
-find_package(ament_cmake REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(example_interfaces REQUIRED)
-find_package(geometry_msgs REQUIRED)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
 
-add_executable(qt_ros2_Joystick
-  main.cpp
-  rosnode.h
-  rosnode.cpp
-  main.qml
-  qml.qrc
-)
-target_link_libraries(qt_ros2_Joystick
-                Qt${QT_VERSION_MAJOR}::Core
-                Qt${QT_VERSION_MAJOR}::Quick
+qt_standard_project_setup(REQUIRES 6.5)
+
+qt_add_executable(appCommandCenter
+    main.cpp
 )
 
-ament_target_dependencies(qt_ros2_Joystick rclcpp std_msgs
-                        example_interfaces geometry_msgs )
+qt_add_qml_module(appCommandCenter
+    URI CommandCenter
+    VERSION 1.0
+    QML_FILES
+        Main.qml
+)
+
+# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# If you are developing for iOS or macOS you should consider setting an
+# explicit, fixed bundle identifier manually though.
+set_target_properties(appCommandCenter PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appCommandCenter
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
+
+target_link_libraries(appCommandCenter
+    PRIVATE Qt6::Quick
+)
 
 include(GNUInstallDirs)
-install(TARGETS qt_ros2_Joystick
+install(TARGETS appCommandCenter
+    BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
