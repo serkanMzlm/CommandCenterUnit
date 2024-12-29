@@ -1,33 +1,19 @@
 <RCC>
+    <qresource prefix="/qml">
+        <file alias="MainWindow.qml">src/UI/MainWindow.qml</file>
+        <file alias="MainView.qml">src/UI/MainView.qml</file>
+        <file alias="MenuPanel.qml">src/UI/MenuPanel.qml</file>
+        <file alias="Toolbar.qml">src/UI/Toolbar.qml</file>
+        <file alias="CCUImage.qml">src/UI/CCUImage.qml</file>
+    </qresource>
     <qresource prefix="/icons">
-        <file alias="medicine.ico">assets/icons/medicine.ico</file>
-        <file alias="medicine.svg">assets/icons/medicine.svg</file>
-        <file alias="arrow.svg">assets/icons/arrow.svg</file>
-        <file alias="cross.svg">assets/icons/cross.svg</file>
-        <file alias="home.svg">assets/icons/home.svg</file>
-        <file alias="more.svg">assets/icons/more.svg</file>
-        <file alias="reject.svg">assets/icons/reject.svg</file>
-        <file alias="settings.svg">assets/icons/settings.svg</file>
-        <file alias="setting.svg">assets/icons/setting.svg</file>
-        <file alias="theme.svg">assets/icons/theme.svg</file>
-        <file alias="warning.svg">assets/icons/warning.svg</file>
-        <file alias="logout.svg">assets/icons/logout.svg</file>
-        <file alias="drive.svg">assets/icons/drive.svg</file>
+        <file alias="ccu_icon.ico">resources/icons/ccu_icon.ico</file>
     </qresource>
     <qresource prefix="/images">
-        <file alias="home.png">assets/images/home.png</file>
-        <file alias="pause.png">assets/images/pause.png</file>
-        <file alias="play.png">assets/images/play.png</file>
-        <file alias="reset.png">assets/images/reset.png</file>
-        <file alias="service.png">assets/images/service.png</file>
-        <file alias="settings.png">assets/images/settings.png</file>
-        <file alias="test.png">assets/images/test.png</file>
-        <file alias="warning.png">assets/images/warning.png</file>
+        <file alias="ccu_icon.png">resources/images/ccu_icon.png</file>
     </qresource>
-    <qresource prefix="/qml">
-        <file alias="Main.qml">qml/Main.qml</file>
-        <file alias="SettingsPage.qml">qml/SettingsPage.qml</file>
-        <file alias="TestPage.qml">qml/TestPage.qml</file>
-        <file alias="Alarms.qml">qml/Alarms.qml</file>
+    <qresource prefix="/svg">
+        <file alias="ccu_icon.svg">resources/svg/ccu_icon.svg</file>
+        <file alias="reject.svg">resources/svg/reject.svg</file>
     </qresource>
 </RCC>

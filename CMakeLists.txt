@@ -1,42 +1,91 @@
-cmake_minimum_required(VERSION 3.16)
+#######################################################
+#            Command Center Unit (CCU)                #
+#######################################################
 
-project(CommandCenter VERSION 0.1 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.20)
 
+list(APPEND CMAKE_MODULE_PATH
+    ${CMAKE_SOURCE_DIR}/cmake
+    ${CMAKE_SOURCE_DIR}/cmake/modules
+)
+
+include(GeneralOptions)
+
+project(CommandCenterUnit 
+    VERSION 
+    0.1 
+    LANGUAGES C CXX
+)
+
+if(UNIX AND NOT APPLE AND NOT ANDROID)
+    set(LINUX TRUE)
+endif()
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 REQUIRED COMPONENTS Quick)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Quick Core Gui Qml)
 
-qt_standard_project_setup(REQUIRES 6.8)
-
-qt_add_executable(appCommandCenter
-    main.cpp
+find_package(Qt${QT_VERSION_MAJOR}
+    REQUIRED
+    COMPONENTS
+        Core
+        Quick
+        Concurrent
+        Core5Compat
+        Xml
+        Sql
+        Widgets
+        Svg
+        Multimedia
+        MultimediaQuickPrivate
+        Sensors
+        Network
+        Positioning
+        Location
+        Bluetooth
+        OpenGL
+        Quick3D
+        Gui
 )
 
-qt_add_qml_module(appCommandCenter
-    URI CommandCenter
-    VERSION 1.0
-    QML_FILES
-        Main.qml
+find_package(rclcpp REQUIRED)
+find_package(ament_cmake REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
+# qt_standard_project_setup(REQUIRES 6.8)
+
+list(APPEND CCU_RESOURCES
+    ${CMAKE_SOURCE_DIR}/recourse.qrc
 )
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
-set_target_properties(appCommandCenter PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appCommandCenter
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
+add_executable(${PROJECT_NAME}
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CCU_RESOURCES}
 )
 
-target_link_libraries(appCommandCenter
-    PRIVATE Qt6::Quick
+
+target_link_libraries(${PROJECT_NAME}
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Quick
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::Gui
+)
+
+ament_target_dependencies(${PROJECT_NAME}
+    rclcpp
+    std_msgs
+    geometry_msgs
 )
 
 include(GNUInstallDirs)
-install(TARGETS appCommandCenter
-    BUNDLE DESTINATION .
+install(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
