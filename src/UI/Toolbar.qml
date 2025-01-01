@@ -60,10 +60,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             hoverEnabled: true
-            onClicked: {
-                console.log(mainWindow.screen.height)
-                // mainWindow.showMinimized()
-            }
+            onClicked: mainWindow.showMinimized()
         }
     }
 }
