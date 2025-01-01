@@ -4,7 +4,9 @@
         <file alias="MainView.qml">src/UI/MainView.qml</file>
         <file alias="MenuPanel.qml">src/UI/MenuPanel.qml</file>
         <file alias="Toolbar.qml">src/UI/Toolbar.qml</file>
+        <file alias="SettingsPage.qml">src/UI/SettingsPage.qml</file>
         <file alias="CCUImage.qml">src/UI/CCUImage.qml</file>
+        <file alias="CCUSwitch.qml">src/UI/CCUSwitch.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="ccu_icon.ico">resources/icons/ccu_icon.ico</file>
@@ -15,5 +17,15 @@
     <qresource prefix="/svg">
         <file alias="ccu_icon.svg">resources/svg/ccu_icon.svg</file>
         <file alias="reject.svg">resources/svg/reject.svg</file>
+        <file alias="console.svg">resources/svg/console.svg</file>
+        <file alias="camera.svg">resources/svg/camera.svg</file>
+        <file alias="setting.svg">resources/svg/setting.svg</file>
+        <file alias="more.svg">resources/svg/more.svg</file>
+        <file alias="home.svg">resources/svg/home.svg</file>
+        <file alias="model.svg">resources/svg/model.svg</file>
+        <file alias="analysis.svg">resources/svg/analysis.svg</file>
+        <file alias="map.svg">resources/svg/map.svg</file>
+        <file alias="cube.svg">resources/svg/cube.svg</file>
+        <file alias="theme.svg">resources/svg/theme.svg</file>
     </qresource>
 </RCC>

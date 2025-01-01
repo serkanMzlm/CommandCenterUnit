@@ -22,6 +22,29 @@ Rectangle {
         }
     }
 
+    Text {
+        id: dateText
+        text: "01.01.2025   12:24"
+        font.pointSize: fontSize * 1.2
+        color: textColor
+        anchors {
+            left: logoItem.right
+            leftMargin: parent.width * 0.01
+            verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Text {
+        id: navigationMenuText
+        text: selectPage
+        font.bold: true
+        font.pointSize: fontSize * 1.5
+        color: conceptColor
+        anchors {
+            centerIn: parent
+        }
+    }
+
     Item {
         id: exitItem
         height: parent.height * 0.7
@@ -33,11 +56,9 @@ Rectangle {
         CCUImage {
             source: "/svg/reject.svg"
             color: titleColor
-        }
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: Qt.quit()
+            mouseArea.onClicked : {
+                onClicked: Qt.quit()
+            }
         }
     }
 
@@ -59,7 +80,6 @@ Rectangle {
         }
         MouseArea {
             anchors.fill: parent
-            hoverEnabled: true
             onClicked: mainWindow.showMinimized()
         }
     }

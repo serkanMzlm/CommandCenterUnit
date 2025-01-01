@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Dialogs
 import Qt5Compat.GraphicalEffects
 
-Item {
-    id: ccuImageRoot
+Rectangle {
+    id: ccuSwitchRoot
     anchors.fill: parent
 
     property color color: "white"
