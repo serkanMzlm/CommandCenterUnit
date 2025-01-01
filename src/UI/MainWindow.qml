@@ -28,6 +28,7 @@ ApplicationWindow {
     property color backgroundColor:  isDarkTheme ? "#1D1F21" : "#fffefb"
 
     property bool isMaximized: false
+    property bool isAutoDecet: true
     property string selectPage: "Home"
     property int fontSize: (height <= 0.01 ? 0.01 : height * 0.015)
 

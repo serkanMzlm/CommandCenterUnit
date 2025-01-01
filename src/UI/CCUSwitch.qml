@@ -1,48 +1,48 @@
 import QtQuick
-import QtQuick.Dialogs
-import Qt5Compat.GraphicalEffects
 
 Rectangle {
     id: ccuSwitchRoot
-    anchors.fill: parent
+    height: 20
+    width: 20
+    radius: height / 2
+    color: "white"
+    border.color: lineColor
+    border.width: 2
 
-    property color color: "white"
+    property alias onText:         leftText.text
+    property alias offText:        rightText.text
 
-    property alias asynchronous:        image.asynchronous
-    property alias cache:               image.cache
-    property alias fillMode:            image.fillMode
-    property alias horizontalAlignment: image.horizontalAlignment
-    property alias mirror:              image.mirror
-    property alias paintedHeight:       image.paintedHeight
-    property alias paintedWidth:        image.paintedWidth
-    property alias progress:            image.progress
-    property alias mipmap:              image.mipmap
-    property alias source:              image.source
-    property alias sourceSize:          image.sourceSize
-    property alias status:              image.status
-    property alias verticalAlignment:   image.verticalAlignment
-    property alias mouseArea: mouseArea
 
-    Image {
-        id:                 image
-        smooth:             true
-        mipmap:             true
-        antialiasing:       true
-        visible:            false
-        fillMode:           Image.PreserveAspectFit
-        anchors.fill:       parent
-        sourceSize.height:  height
+    Rectangle {
+        id: slider
+        height: ccuSwitchRoot.height - 8
+        width: ccuSwitchRoot.width / 2
+        radius: height / 2
+        color: conceptColor
+        anchors.verticalCenter: parent.verticalCenter
+        x: isDarkTheme ? parent.width - width - 4 : 4
+        Behavior on x { NumberAnimation { duration: 200 } }
     }
-
-    ColorOverlay {
-        anchors.fill:       image
-        source:             image
-        color:              parent.color
+    Text {
+        id: leftText
+        text: ""
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 10
+        color: textColor
+        font.pointSize: fontSize
     }
-
+    Text {
+        id: rightText
+        text: ""
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: 10
+        color: leftText.color
+        font.pointSize: leftText.font.pointSize
+    }
     MouseArea {
-        id: mouseArea
         anchors.fill: parent
-        hoverEnabled: false
+        onClicked: isDarkTheme = !isDarkTheme
     }
 }

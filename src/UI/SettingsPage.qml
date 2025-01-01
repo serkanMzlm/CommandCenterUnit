@@ -44,49 +44,28 @@ Item {
             }
         }
 
-        // Rectangle {
-        //     id: themeSwitch
-        //     height: image.height
-        //     width: height * 4
-        //     radius: height / 2
-        //     color: buttonColor
-        //     anchors.verticalCenter: image.verticalCenter
-        //     anchors.right: parent.right
-        //     anchors.rightMargin: height
-        //     border.color: lineColor
-        //     border.width: 2
-
-        //     Rectangle {
-        //         id: slider
-        //         height: theme_switch.height - 8
-        //         width: theme_switch.width / 2
-        //         radius: height / 2
-        //         color: conceptColor
-        //         anchors.verticalCenter: parent.verticalCenter
-        //         x: isDarkTheme ? theme_switch.width - width - 4 : 4
-        //         Behavior on x { NumberAnimation { duration: 200 } }
-        //     }
-
-        //     Text {
-        //         text: "Light"
-        //         anchors.left: parent.left
-        //         anchors.verticalCenter: parent.verticalCenter
-        //         anchors.leftMargin: 10
-        //         color: textColor
-        //         font.pointSize: font_size * 0.8
-        //     }
-        //     Text {
-        //         text: "Dark"
-        //         anchors.right: parent.right
-        //         anchors.verticalCenter: parent.verticalCenter
-        //         anchors.rightMargin: 10
-        //         color: textColor
-        //         font.pointSize: font_size * 0.8
-        //     }
-        //     MouseArea {
-        //         anchors.fill: parent
-        //         onClicked: isDarkTheme = !isDarkTheme
-        //     }
-        // }
+        CCUSwitch {
+            id: themeSwitch
+            height: image.height
+            width: height * 5
+            color: buttonColor
+            anchors.verticalCenter: themeItem.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: height * 0.5
+            onText: "Light"
+            offText: "Dark"
+        }
     }
+
+    Rectangle {
+        id: serialRec
+        height: isAutoDecet ? parent.height * 0.15 : parent.height * 0.3
+        width: themeRec.width
+        radius: themeRec.radius
+        color: buttonColor
+        anchors.top: themeRec.bottom
+        anchors.left: themeRec.left
+        anchors.topMargin: themeRec.height * 0.5
+    }
+
 }
