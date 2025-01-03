@@ -29,14 +29,14 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: height * 0.4
             CCUImage {
-                id: image
+                id: themeImage
                 source: "/svg/theme.svg"
                 color: titleColor
             }
             Text {
                 id: iconText
                 text: "Theme"
-                anchors.left: image.right
+                anchors.left: themeImage.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.leftMargin: parent.width * 0.4
                 color: textColor
@@ -46,14 +46,15 @@ Item {
 
         CCUSwitch {
             id: themeSwitch
-            height: image.height
-            width: height * 5
-            color: buttonColor
+            height: themeImage.height
+            width: height * 4
             anchors.verticalCenter: themeItem.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: height * 0.5
             onText: "Light"
             offText: "Dark"
+            mouseArea.onClicked: isDarkTheme = !isDarkTheme
+            // color: buttonColor
         }
     }
 
@@ -65,7 +66,163 @@ Item {
         color: buttonColor
         anchors.top: themeRec.bottom
         anchors.left: themeRec.left
-        anchors.topMargin: themeRec.height * 0.5
-    }
+        anchors.topMargin: themeRec.height * 0.1
 
+        Rectangle {
+            height: serialImage.height
+            width: height
+            radius: height * 0.2
+            color: isConnectSerial ? "darkgreen" : lineColor
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: height * 0.4
+            anchors.rightMargin: height * 0.5
+            // Connections {
+            //     target: SerialComm
+            //     function onPortConnection(new_data) {
+            //         isConnectSerial = new_data
+            //     }
+            // }
+        }
+        Item {
+            id: serialItem
+            width: themeItem.height
+            height: width
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.leftMargin: height * 0.4
+            anchors.topMargin: height * 0.4
+            CCUImage {
+                id: serialImage
+                source: "/svg/drive.svg"
+                color: titleColor
+            }
+            Text {
+                id: serialText
+                text: "Serial"
+                anchors.left: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.leftMargin: parent.width * 0.1
+                color: titleColor
+                font.pointSize: fontSize * 1.2
+            }
+        }
+
+        Text {
+            id: autoDetectText
+            anchors.top: serialItem.bottom
+            anchors.left: serialItem.left
+            anchors.topMargin: themeRec.height * 0.3
+            text: "Auto Serial Connect"
+            color: textColor
+            font.pointSize: fontSize
+        }
+
+        CCUSwitch {
+            id: autoDetectSwitch
+            height: serialItem.height
+            width: height * 4
+            anchors.verticalCenter: autoDetectText.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: height * 0.5
+            onText: "Off"
+            offText: "On"
+            mouseArea.onClicked: {
+                // SerialComm.updatePortList()
+                // SerialComm.setAutoConnect(!isAutoDecet)
+                // if(isAutoDecet) {
+                // SerialComm.serialDisconnect()
+                // }
+                isAutoDecet = !isAutoDecet
+            }
+        }
+
+        Text {
+            id: serialPortListText
+            anchors.top: autoDetectText.bottom
+            anchors.left: autoDetectText.left
+            anchors.topMargin: parent.height * 0.075
+            text: "Serial Port Name"
+            color: textColor
+            font.pointSize: fontSize
+            visible: !isAutoDecet
+        }
+
+        Column {
+            spacing: 20
+            anchors.verticalCenter: serialPortListText.verticalCenter
+            anchors.right: autoDetectSwitch.right
+            visible: !isAutoDecet
+
+            ComboBox {
+                id: portSelector
+                width: autoDetectSwitch.width
+                height: autoDetectSwitch.height
+                textRole: "portName"
+
+                onActivated: {
+                    serialPortName = portSelector.currentText
+                }
+
+                model: ListModel {
+                    id: portListModel
+                }
+
+                // Connections {
+                //     target: SerialComm
+                //     function onPortListUpdated(ports) {
+                //         portListModel.clear()
+                //         for (var i = 0; i < ports.length; i++) {
+                //             portListModel.append({"portName": ports[i]})
+                //         }
+                //     }
+                // }
+            }
+        }
+
+        Text {
+            id: baudrateText
+            anchors.top: serialPortListText.bottom
+            anchors.left: serialPortListText.left
+            anchors.topMargin: parent.height * 0.075
+            text: "Baudrate"
+            color: textColor
+            font.pointSize: fontSize
+            visible: !isAutoDecet
+        }
+
+        TextField {
+            id: baudrateDataField
+            width: autoDetectSwitch.width
+            height: autoDetectSwitch.height
+            anchors.verticalCenter: baudrateText.verticalCenter
+            anchors.right: autoDetectSwitch.right
+            color: "black"
+            visible: !isAutoDecet
+        }
+
+        CCUSwitch {
+            id: connectSwitch
+            height: serialItem.height
+            width: height * 6
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: baudrateDataField.bottom
+            anchors.topMargin: parent.height * 0.1
+            onText: "Disconnect"
+            offText: "Connect"
+            visible: !isAutoDecet
+            mouseArea.onClicked: {
+                isConnect = !isConnect
+                // if(isConnect) {
+                //     var baudrate = parseInt(baudrate_data_field.text.length > 0 ? baudrate_data_field.text : 115200);
+                //     SerialComm.setBaudrate(baudrate)
+                //     SerialComm.setSelectedPort(serialPortName)
+                //     SerialComm.serialConnect()
+                // } else {
+                //     SerialComm.serialDisconnect()
+                // }
+            }
+        }
+
+    }
 }

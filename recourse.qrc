@@ -27,5 +27,6 @@
         <file alias="map.svg">resources/svg/map.svg</file>
         <file alias="cube.svg">resources/svg/cube.svg</file>
         <file alias="theme.svg">resources/svg/theme.svg</file>
+        <file alias="drive.svg">resources/svg/drive.svg</file>
     </qresource>
 </RCC>

@@ -21,7 +21,7 @@ Item {
     property alias sourceSize:          image.sourceSize
     property alias status:              image.status
     property alias verticalAlignment:   image.verticalAlignment
-    property alias mouseArea: mouseArea
+    property alias mouseArea:           mouseArea
 
     Image {
         id:                 image

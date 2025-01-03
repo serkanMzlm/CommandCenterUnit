@@ -6,13 +6,14 @@ Rectangle {
     width: 20
     radius: height / 2
     color: "white"
-    border.color: lineColor
+    border.color: buttonColor
     border.width: 2
 
-    property alias onText:         leftText.text
-    property alias offText:        rightText.text
-
-
+    property alias onText:         rightText.text
+    property alias offText:        leftText.text
+    property alias textColor:      leftText.color
+    property alias mouseArea:      mouseArea
+    property bool isActive:             false
     Rectangle {
         id: slider
         height: ccuSwitchRoot.height - 8
@@ -20,7 +21,7 @@ Rectangle {
         radius: height / 2
         color: conceptColor
         anchors.verticalCenter: parent.verticalCenter
-        x: isDarkTheme ? parent.width - width - 4 : 4
+        x: isActive ?  parent.width - width - 4 : 4
         Behavior on x { NumberAnimation { duration: 200 } }
     }
     Text {
@@ -29,8 +30,8 @@ Rectangle {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 10
-        color: textColor
-        font.pointSize: fontSize
+        color: "#3b3c3d" //textColor
+        font.pointSize: fontSize * 0.8
     }
     Text {
         id: rightText
@@ -42,7 +43,10 @@ Rectangle {
         font.pointSize: leftText.font.pointSize
     }
     MouseArea {
+        id: mouseArea
         anchors.fill: parent
-        onClicked: isDarkTheme = !isDarkTheme
+        onClicked: {
+            isActive = !isActive
+        }
     }
 }
