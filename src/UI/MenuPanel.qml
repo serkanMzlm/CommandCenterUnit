@@ -10,14 +10,14 @@ Item {
     property int selected_index: 0
 
     property var navItems: [
-        {"label": "Home", "iconSource": "/svg/home.svg", "page": ""},
-        {"label": "Joystick", "iconSource": "/svg/console.svg", "page": ""},
-        {"label": "Camera", "iconSource": "/svg/camera.svg", "page": ""},
-        {"label": "Model", "iconSource": "/svg/cube.svg", "page": ""},
-        {"label": "Analysis", "iconSource": "/svg/analysis.svg", "page": ""},
-        {"label": "Map", "iconSource": "/svg/map.svg", "page": ""},
+        {"label": "Home", "iconSource": "/svg/home.svg", "page": "TestPage.qml"},
+        {"label": "Joystick", "iconSource": "/svg/console.svg", "page": "JoystickPage.qml"},
+        {"label": "Camera", "iconSource": "/svg/camera.svg", "page": "TestPage.qml"},
+        {"label": "Model", "iconSource": "/svg/cube.svg", "page": "TestPage.qml"},
+        {"label": "Analysis", "iconSource": "/svg/analysis.svg", "page": "TestPage.qml"},
+        {"label": "Map", "iconSource": "/svg/map.svg", "page": "TestPage.qml"},
         {"label": "Settings", "iconSource": "/svg/setting.svg", "page": "SettingsPage.qml"},
-        {"label": "More", "iconSource": "/svg/more.svg", "page": ""},
+        {"label": "More", "iconSource": "/svg/more.svg", "page": "TestPage.qml"},
     ]
 
     Rectangle {
@@ -34,7 +34,6 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: width * 0.25
         anchors.verticalCenter: parent.verticalCenter
-        // anchors.centerIn: parent
         spacing: width * 0.1
         Repeater {
             model: navItems
@@ -47,6 +46,7 @@ Item {
                     source: modelData.iconSource !== "" ? modelData.iconSource : "/svg/more.svg"
                     color: titleColor
                     anchors.margins: parent.width * 0.12
+                    anchors.fill: parent
                     fillMode: Image.PreserveAspectCrop
                     mouseArea.onClicked: {
                         menuPanelRoot.selected_index = index

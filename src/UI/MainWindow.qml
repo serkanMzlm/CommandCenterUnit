@@ -10,8 +10,11 @@ ApplicationWindow {
     // height: mainWindow.screen.height
     // visibility: Window.FullScreen
 
-    width: 640
-    height: 480
+    width: mainWindow.screen.width
+    height: mainWindow.screen.height
+
+    minimumWidth:  mainWindow.screen.width * 0.5
+    minimumHeight: mainWindow.screen.height * 0.5
 
     visible: true
     color: backgroundColor
@@ -48,6 +51,7 @@ ApplicationWindow {
             id: pageLoader
             anchors.bottom: parent.bottom
             anchors.left: parent.right
+            source: "TestPage.qml"
         }
     }
 }

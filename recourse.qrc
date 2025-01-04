@@ -5,6 +5,8 @@
         <file alias="MenuPanel.qml">src/UI/MenuPanel.qml</file>
         <file alias="Toolbar.qml">src/UI/Toolbar.qml</file>
         <file alias="SettingsPage.qml">src/UI/SettingsPage.qml</file>
+        <file alias="TestPage.qml">src/UI/TestPage.qml</file>
+        <file alias="JoystickPage.qml">src/UI/JoystickPage.qml</file>
         <file alias="CCUImage.qml">src/UI/CCUImage.qml</file>
         <file alias="CCUSwitch.qml">src/UI/CCUSwitch.qml</file>
     </qresource>
@@ -13,6 +15,17 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="ccu_icon.png">resources/images/ccu_icon.png</file>
+        <file alias="joystick/up.png">resources/images/joystick/up.png</file>
+        <file alias="joystick/triangle.png">resources/images/joystick/triangle.png</file>
+        <file alias="joystick/right.png">resources/images/joystick/right.png</file>
+        <file alias="joystick/reverse_red.png">resources/images/joystick/reverse_red.png</file>
+        <file alias="joystick/reverse_blue.png">resources/images/joystick/reverse_blue.png</file>
+        <file alias="joystick/rectangle.png">resources/images/joystick/rectangle.png</file>
+        <file alias="joystick/left.png">resources/images/joystick/left.png</file>
+        <file alias="joystick/down.png">resources/images/joystick/down.png</file>
+        <file alias="joystick/circle_blue.png">resources/images/joystick/circle_blue.png</file>
+        <file alias="joystick/circle.png">resources/images/joystick/circle.png</file>
+        <file alias="joystick/x.png">resources/images/joystick/x.png</file>
     </qresource>
     <qresource prefix="/svg">
         <file alias="ccu_icon.svg">resources/svg/ccu_icon.svg</file>

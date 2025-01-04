@@ -19,6 +19,7 @@ Rectangle {
         CCUImage {
             source: "/svg/ccu_icon.svg"
             color: titleColor
+            anchors.fill: parent
         }
     }
 
@@ -56,6 +57,7 @@ Rectangle {
         CCUImage {
             source: "/svg/reject.svg"
             color: titleColor
+            anchors.fill: parent
             mouseArea.onClicked : {
                 onClicked: Qt.quit()
             }

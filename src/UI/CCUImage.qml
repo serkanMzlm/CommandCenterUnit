@@ -4,10 +4,9 @@ import Qt5Compat.GraphicalEffects
 
 Item {
     id: ccuImageRoot
-    anchors.fill: parent
 
     property color color: "white"
-
+    property bool overlayEnabled: true
     property alias asynchronous:        image.asynchronous
     property alias cache:               image.cache
     property alias fillMode:            image.fillMode
@@ -18,6 +17,7 @@ Item {
     property alias progress:            image.progress
     property alias mipmap:              image.mipmap
     property alias source:              image.source
+    property alias scale:               image.scale
     property alias sourceSize:          image.sourceSize
     property alias status:              image.status
     property alias verticalAlignment:   image.verticalAlignment
@@ -28,7 +28,7 @@ Item {
         smooth:             true
         mipmap:             true
         antialiasing:       true
-        visible:            false
+        visible:            true
         fillMode:           Image.PreserveAspectFit
         anchors.fill:       parent
         sourceSize.height:  height
@@ -38,6 +38,7 @@ Item {
         anchors.fill:       image
         source:             image
         color:              parent.color
+        visible:            ccuImageRoot.overlayEnabled
     }
 
     MouseArea {

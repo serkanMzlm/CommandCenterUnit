@@ -21,18 +21,16 @@ Item {
         anchors.left: parent.left
         anchors.topMargin: height * 0.5
         anchors.leftMargin: height * 0.5
-        Item {
-            id: themeItem
+
+        CCUImage {
+            id: themeImage
             width: parent.height * 0.4
             height: width
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.leftMargin: height * 0.4
-            CCUImage {
-                id: themeImage
-                source: "/svg/theme.svg"
-                color: titleColor
-            }
+            source: "/svg/theme.svg"
+            color: titleColor
             Text {
                 id: iconText
                 text: "Theme"
@@ -48,13 +46,12 @@ Item {
             id: themeSwitch
             height: themeImage.height
             width: height * 4
-            anchors.verticalCenter: themeItem.verticalCenter
+            anchors.verticalCenter: themeImage.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: height * 0.5
             onText: "Light"
             offText: "Dark"
             mouseArea.onClicked: isDarkTheme = !isDarkTheme
-            // color: buttonColor
         }
     }
 
@@ -84,19 +81,17 @@ Item {
             //     }
             // }
         }
-        Item {
-            id: serialItem
-            width: themeItem.height
+
+        CCUImage {
+            id: serialImage
+            width: themeImage.height
             height: width
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.leftMargin: height * 0.4
             anchors.topMargin: height * 0.4
-            CCUImage {
-                id: serialImage
-                source: "/svg/drive.svg"
-                color: titleColor
-            }
+            source: "/svg/drive.svg"
+            color: titleColor
             Text {
                 id: serialText
                 text: "Serial"
@@ -110,8 +105,8 @@ Item {
 
         Text {
             id: autoDetectText
-            anchors.top: serialItem.bottom
-            anchors.left: serialItem.left
+            anchors.top: serialImage.bottom
+            anchors.left: serialImage.left
             anchors.topMargin: themeRec.height * 0.3
             text: "Auto Serial Connect"
             color: textColor
@@ -120,7 +115,7 @@ Item {
 
         CCUSwitch {
             id: autoDetectSwitch
-            height: serialItem.height
+            height: serialImage.height
             width: height * 4
             anchors.verticalCenter: autoDetectText.verticalCenter
             anchors.right: parent.right
@@ -203,7 +198,7 @@ Item {
 
         CCUSwitch {
             id: connectSwitch
-            height: serialItem.height
+            height: serialImage.height
             width: height * 6
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: baudrateDataField.bottom
@@ -223,6 +218,5 @@ Item {
                 // }
             }
         }
-
     }
 }
