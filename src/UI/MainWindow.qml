@@ -6,10 +6,8 @@ import QtQuick.Window
 
 ApplicationWindow {
     id: mainWindow
-    // width: mainWindow.screen.width
-    // height: mainWindow.screen.height
-    // visibility: Window.FullScreen
 
+    // visibility: Window.FullScreen
     width: mainWindow.screen.width
     height: mainWindow.screen.height
 

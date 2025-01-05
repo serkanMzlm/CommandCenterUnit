@@ -5,6 +5,7 @@
         <file alias="MenuPanel.qml">src/UI/MenuPanel.qml</file>
         <file alias="Toolbar.qml">src/UI/Toolbar.qml</file>
         <file alias="SettingsPage.qml">src/UI/SettingsPage.qml</file>
+        <file alias="MapPage.qml">src/UI/MapPage.qml</file>
         <file alias="TestPage.qml">src/UI/TestPage.qml</file>
         <file alias="JoystickPage.qml">src/UI/JoystickPage.qml</file>
         <file alias="CCUImage.qml">src/UI/CCUImage.qml</file>

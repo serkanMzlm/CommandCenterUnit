@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
-    if(rclcpp::ok())
-    {
+    if(rclcpp::ok()) {
         rclcpp::shutdown();
     }
 

@@ -15,7 +15,7 @@ Item {
         {"label": "Camera", "iconSource": "/svg/camera.svg", "page": "TestPage.qml"},
         {"label": "Model", "iconSource": "/svg/cube.svg", "page": "TestPage.qml"},
         {"label": "Analysis", "iconSource": "/svg/analysis.svg", "page": "TestPage.qml"},
-        {"label": "Map", "iconSource": "/svg/map.svg", "page": "TestPage.qml"},
+        {"label": "Map", "iconSource": "/svg/map.svg", "page": "MapPage.qml"},
         {"label": "Settings", "iconSource": "/svg/setting.svg", "page": "SettingsPage.qml"},
         {"label": "More", "iconSource": "/svg/more.svg", "page": "TestPage.qml"},
     ]

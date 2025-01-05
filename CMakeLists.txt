@@ -53,22 +53,18 @@ find_package(Qt${QT_VERSION_MAJOR}
         Gui
 )
 
-find_package(rclcpp REQUIRED)
-find_package(ament_cmake REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
-
-# qt_standard_project_setup(REQUIRES 6.8)
+qt_standard_project_setup(REQUIRES 6.8)
 
 list(APPEND CCU_RESOURCES
     ${CMAKE_SOURCE_DIR}/recourse.qrc
 )
 
+add_subdirectory(src)
+
 add_executable(${PROJECT_NAME}
     ${CMAKE_SOURCE_DIR}/src/main.cpp
     ${CCU_RESOURCES}
 )
-
 
 target_link_libraries(${PROJECT_NAME}
     Qt${QT_VERSION_MAJOR}::Core
@@ -76,12 +72,7 @@ target_link_libraries(${PROJECT_NAME}
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::Svg
     Qt${QT_VERSION_MAJOR}::Gui
-)
-
-ament_target_dependencies(${PROJECT_NAME}
-    rclcpp
-    std_msgs
-    geometry_msgs
+    CCU
 )
 
 include(GNUInstallDirs)
