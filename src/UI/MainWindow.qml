@@ -9,6 +9,8 @@ import QtPositioning
 import QtQuick.Controls
 import QtLocation
 
+import CCU.ROSLink 1.0
+
 ApplicationWindow {
     id: mainWindow
 
@@ -41,6 +43,10 @@ ApplicationWindow {
 
     Toolbar {
         id: toolbar
+    }
+
+    ROSLink {
+        id: rosLink
     }
 
     MenuPanel {

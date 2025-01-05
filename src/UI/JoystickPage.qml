@@ -45,16 +45,17 @@ Item {
             color: "#59BDB7"
         }
         MouseArea {
-           anchors.fill: parent
-           onPositionChanged:
-           {
-               if(mouseX > 0 && mouseX < emptyRec.width) {
-                   ball.x = mouseX - ball.width * 0.5
-               }
-               if(mouseY > 0 && mouseY < emptyRec.height) {
-                   ball.y = mouseY - ball.height * 0.5
-               }
-           }
+            anchors.fill: parent
+            onPositionChanged:
+            {
+                if(mouseX > 0 && mouseX < emptyRec.width) {
+                    ball.x = mouseX - ball.width * 0.5
+                }
+                if(mouseY > 0 && mouseY < emptyRec.height) {
+                    ball.y = mouseY - ball.height * 0.5
+                }
+                rosLink.pointCallback(ball.x, ball.y)
+            }
         }
     }
 
@@ -73,9 +74,11 @@ Item {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             mouseArea.onPressed:{
-                    upImage.opacity = 0.5
-                }
+                upImage.opacity = 0.5
+                rosLink.buttonCallback(0)
+            }
             mouseArea.onReleased: upImage.opacity  = 1.0
+
         }
         CCUImage {
             id: downImage
@@ -86,8 +89,9 @@ Item {
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             mouseArea.onPressed:{
-                    downImage.opacity = 0.5
-                }
+                downImage.opacity = 0.5
+                rosLink.buttonCallback(1)
+            }
             mouseArea.onReleased: downImage.opacity  = 1.0
         }
         CCUImage {
@@ -99,8 +103,9 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             mouseArea.onPressed:{
-                    leftImage.opacity = 0.5
-                }
+                leftImage.opacity = 0.5
+                rosLink.buttonCallback(2)
+            }
             mouseArea.onReleased: leftImage.opacity  = 1.0
         }
         CCUImage {
@@ -112,8 +117,9 @@ Item {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             mouseArea.onPressed:{
-                    rightImage.opacity = 0.5
-                }
+                rightImage.opacity = 0.5
+                rosLink.buttonCallback(3)
+            }
             mouseArea.onReleased: rightImage.opacity  = 1.0
         }
     }
@@ -133,8 +139,9 @@ Item {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             mouseArea.onPressed:{
-                    triangleImage.scale = 1.3
-                }
+                triangleImage.scale = 1.3
+                rosLink.buttonCallback(4)
+            }
             mouseArea.onReleased: triangleImage.scale = 1.0
         }
         CCUImage {
@@ -146,8 +153,9 @@ Item {
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             mouseArea.onPressed:{
-                    xImage.scale = 1.3
-                }
+                xImage.scale = 1.3
+                rosLink.buttonCallback(5)
+            }
             mouseArea.onReleased: xImage.scale = 1.0
         }
         CCUImage {
@@ -159,8 +167,9 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             mouseArea.onPressed:{
-                    recImage.scale = 1.3
-                }
+                recImage.scale = 1.3
+                rosLink.buttonCallback(6)
+            }
             mouseArea.onReleased: recImage.scale = 1.0
         }
         CCUImage {
@@ -172,10 +181,10 @@ Item {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             mouseArea.onPressed:{
-                    circleImage.scale = 1.3
-                }
+                circleImage.scale = 1.3
+                rosLink.buttonCallback(7)
+            }
             mouseArea.onReleased: circleImage.scale = 1.0
         }
-
     }
 }

@@ -1,15 +1,19 @@
 #ifndef __CCU_APPLICATION_HPP__
 #define __CCU_APPLICATION_HPP__
 
-#include <QtWidgets/QApplication>
 
-#include "RosLink.hpp"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
-// class CCUApplication: public QApplication{
-//     Q_OBJECT
-// public:
-//     CCUApplication(int argc, char** argv);
-//     ~CCUApplication();
-// };
+class CCUApplication: public QGuiApplication{
+    Q_OBJECT
+public:
+    explicit CCUApplication(int argc, char** argv);
+    void loadQML();
+    void commInit();
+
+private:
+    QQmlApplicationEngine engine;
+};
 
 #endif
