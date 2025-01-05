@@ -1,7 +1,3 @@
-find_package(rclcpp REQUIRED)
-find_package(ament_cmake REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
 
 add_library(CCU STATIC
     CCUApplication.cpp
@@ -10,13 +6,7 @@ add_library(CCU STATIC
 
 add_subdirectory(Comms)
 
-ament_target_dependencies(CCU
-    rclcpp
-    std_msgs
-    geometry_msgs
-)
-
-target_link_libraries(CCU
+target_link_libraries(CCU PUBLIC
         Qt6::Quick
         Qt6::Core5Compat
         Qt6::Bluetooth

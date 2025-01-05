@@ -5,12 +5,11 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include <rclcpp/rclcpp.hpp>
+#include "RosLink.hpp"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    rclcpp::init(argc, argv);
     app.setWindowIcon(QIcon(":/icons/ccu_icon.ico"));
 
     QQmlApplicationEngine engine;    
@@ -28,10 +27,5 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     engine.load(url);
-
-    if(rclcpp::ok()) {
-        rclcpp::shutdown();
-    }
-
     return app.exec();
 }
