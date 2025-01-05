@@ -51,7 +51,14 @@ Item {
                     mouseArea.onClicked: {
                         menuPanelRoot.selected_index = index
                         selectPage =  modelData.label
-                        pageLoader.source = modelData.page
+                        pageLoader.source = menuPanelRoot.selected_index == 5 ? "" : modelData.page
+                        if(menuPanelRoot.selected_index == 5 ) {
+                            mainWindow.mapVisible = true
+                            console.log(mainWindow.mapVisible)
+                        } else {
+                            mainWindow.mapVisible = false
+                            console.log(mainWindow.mapVisible)
+                        }
                     }
                 }
             }

@@ -7,8 +7,9 @@ import QtLocation
 
 Item {
     id: mapPage
-    height: mainWindow.height * 0.95
-    width: mainWindow.width * 0.925
+    height: mainWindow.height // * 0.95
+    width: mainWindow.width //* 0.925
+    z: -1
 
     Plugin {
         id: mapPlugin
