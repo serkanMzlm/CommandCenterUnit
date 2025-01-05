@@ -5,10 +5,12 @@ find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 add_library(Comms STATIC
-    RosLink.cpp
     RosLink.hpp
-    SerialLink.cpp
+    RosLink.cpp
     SerialLink.hpp
+    SerialLink.cpp
+    DeviceLink.hpp
+    DeviceLink.cpp
 )
 
 ament_target_dependencies(Comms

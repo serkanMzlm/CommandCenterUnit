@@ -1,12 +1,17 @@
 import QtQuick
 import QtQuick.Dialogs
 
+import CCU.DeviceLink 1.0
 
 Rectangle {
     id: toolbarRoot
     color: toolbarColor
     width: parent.width
     height: parent.height * 0.05
+
+    DeviceLink {
+        id: deviceLink
+    }
 
     Item {
         id: logoItem
@@ -25,7 +30,7 @@ Rectangle {
 
     Text {
         id: dateText
-        text: "01.01.2025   12:24"
+        text: deviceLink.localTime //"01.01.2025   12:24"
         font.pointSize: fontSize * 1.2
         color: textColor
         anchors {

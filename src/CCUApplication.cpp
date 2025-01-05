@@ -3,8 +3,9 @@
 #include <QQmlEngine>
 #include <QCoreApplication>
 
-#include "CCUApplication.hpp"
 #include "RosLink.hpp"
+#include "DeviceLink.hpp"
+#include "CCUApplication.hpp"
 
 CCUApplication::CCUApplication(int argc, char** argv):
     QGuiApplication(argc, argv) {
@@ -30,4 +31,5 @@ void CCUApplication::loadQML() {
 
 void CCUApplication::commInit() {
     qmlRegisterType<ROSLink>("CCU.ROSLink", 1, 0, "ROSLink");
+    qmlRegisterType<DeviceLink>("CCU.DeviceLink", 1, 0, "DeviceLink");
 }
