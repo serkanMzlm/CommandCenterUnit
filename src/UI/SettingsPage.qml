@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import CCU.SerialLink 1.0
 
 Item {
     id: settingsPage
@@ -10,6 +11,10 @@ Item {
     property bool isConnect: false
     property string serialPortName: ""
     property bool isConnectSerial: false
+
+    SerialLink {
+        id: serialLink
+    }
 
     Rectangle {
         id: themeRec
@@ -74,12 +79,12 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: height * 0.4
             anchors.rightMargin: height * 0.5
-            // Connections {
-            //     target: SerialComm
-            //     function onPortConnection(new_data) {
-            //         isConnectSerial = new_data
-            //     }
-            // }
+            Connections {
+                target: serialLink
+                function onPortConnection(new_data) {
+                    isConnectSerial = new_data
+                }
+            }
         }
 
         CCUImage {
@@ -123,11 +128,11 @@ Item {
             onText: "Off"
             offText: "On"
             mouseArea.onClicked: {
-                // SerialComm.updatePortList()
-                // SerialComm.setAutoConnect(!isAutoDecet)
-                // if(isAutoDecet) {
-                // SerialComm.serialDisconnect()
-                // }
+                serialLink.updatePortList()
+                serialLink.setAutoConnect(!isAutoDecet)
+                if(isAutoDecet) {
+                    serialLink.serialDisconnect()
+                }
                 isAutoDecet = !isAutoDecet
             }
         }
@@ -163,15 +168,15 @@ Item {
                     id: portListModel
                 }
 
-                // Connections {
-                //     target: SerialComm
-                //     function onPortListUpdated(ports) {
-                //         portListModel.clear()
-                //         for (var i = 0; i < ports.length; i++) {
-                //             portListModel.append({"portName": ports[i]})
-                //         }
-                //     }
-                // }
+                Connections {
+                    target: serialLink
+                    function onPortListUpdated(ports) {
+                        portListModel.clear()
+                        for (var i = 0; i < ports.length; i++) {
+                            portListModel.append({"portName": ports[i]})
+                        }
+                    }
+                }
             }
         }
 
@@ -203,19 +208,19 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: baudrateDataField.bottom
             anchors.topMargin: parent.height * 0.1
-            onText: "Disconnect"
-            offText: "Connect"
+            onText: "Connect"
+            offText: "Disconnect"
             visible: !isAutoDecet
             mouseArea.onClicked: {
                 isConnect = !isConnect
-                // if(isConnect) {
-                //     var baudrate = parseInt(baudrate_data_field.text.length > 0 ? baudrate_data_field.text : 115200);
-                //     SerialComm.setBaudrate(baudrate)
-                //     SerialComm.setSelectedPort(serialPortName)
-                //     SerialComm.serialConnect()
-                // } else {
-                //     SerialComm.serialDisconnect()
-                // }
+                if(isConnect) {
+                    var baudrate = parseInt(baudrateDataField.text.length > 0 ? baudrateDataField.text : 115200);
+                    serialLink.setBaudrate(baudrate)
+                    serialLink.setSelectedPort(serialPortName)
+                    serialLink.serialConnect()
+                } else {
+                    serialLink.serialDisconnect()
+                }
             }
         }
     }

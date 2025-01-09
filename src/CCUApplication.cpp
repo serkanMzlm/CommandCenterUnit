@@ -5,6 +5,7 @@
 
 #include "RosLink.hpp"
 #include "DeviceLink.hpp"
+#include "SerialLink.hpp"
 #include "CCUApplication.hpp"
 
 CCUApplication::CCUApplication(int argc, char** argv):
@@ -32,4 +33,5 @@ void CCUApplication::loadQML() {
 void CCUApplication::commInit() {
     qmlRegisterType<ROSLink>("CCU.ROSLink", 1, 0, "ROSLink");
     qmlRegisterType<DeviceLink>("CCU.DeviceLink", 1, 0, "DeviceLink");
+    qmlRegisterType<SerialLink>("CCU.SerialLink", 1, 0, "SerialLink");
 }

@@ -48,6 +48,7 @@ find_package(Qt${QT_VERSION_MAJOR}
         Positioning
         Location
         Bluetooth
+        SerialPort
         OpenGL
         Quick3D
         Gui

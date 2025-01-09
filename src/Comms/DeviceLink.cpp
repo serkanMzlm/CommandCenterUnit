@@ -5,7 +5,6 @@ DeviceLink::DeviceLink(QObject *parent) : QObject{parent}
     setLocalTime("01.01.2000  00:00");
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &DeviceLink::updateSystemInfo);
-    qDebug() << "kdkdkdkd";
     timer->start(1000);
 }
 
