@@ -23,3 +23,9 @@ The joystick interface is developed using Qt. This interface communicates with R
 
 
 [qt_joy.webm](https://github.com/serkanMzlm/QT-ROS2-Joystick/assets/74418302/1093c2bf-77d2-40e3-9b08-3631efae21ea)
+
+
+
+## NEW 
+
+[Screencast from 09-01-2025 21:21:28.webm](https://github.com/user-attachments/assets/9cb52734-c413-42d4-ae94-59be2bc1b3ea)
