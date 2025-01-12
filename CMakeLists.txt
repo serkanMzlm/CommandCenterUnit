@@ -21,6 +21,15 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
     set(LINUX TRUE)
 endif()
 
+if(APPLE AND NOT IOS)
+    set(MACOS TRUE)
+endif()
+
+if(IOS OR ANDROID)
+    set(MOBILE TRUE)
+    add_compile_definitions(__mobile__)
+endif()
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
@@ -29,29 +38,28 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Quick Core Gui Qml)
-
 find_package(Qt${QT_VERSION_MAJOR}
-    REQUIRED
-    COMPONENTS
-        Core
-        Quick
-        Concurrent
-        Core5Compat
-        Xml
-        Sql
-        Widgets
-        Svg
-        Multimedia
-        MultimediaQuickPrivate
-        Sensors
-        Network
-        Positioning
-        Location
-        Bluetooth
-        SerialPort
-        OpenGL
-        Quick3D
-        Gui
+REQUIRED
+COMPONENTS
+Core
+Quick
+Concurrent
+Core5Compat
+Xml
+Sql
+Widgets
+Svg
+Multimedia
+MultimediaQuickPrivate
+Sensors
+Network
+Positioning
+Location
+Bluetooth
+SerialPort
+OpenGL
+Quick3D
+Gui
 )
 
 qt_standard_project_setup(REQUIRES 6.8)

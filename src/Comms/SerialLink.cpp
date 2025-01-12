@@ -67,7 +67,7 @@ void SerialLink::checkDeviceConnection()
                 baudrate = DEFAULT_BAUDRATE;
                 serialConnect();
                 time_coef = 10;
-                sleepForTimeout(TIME_OUT);
+                // sleepForTimeout(TIME_OUT);
                 qDebug() << "Connected with Device";
             }
             break;

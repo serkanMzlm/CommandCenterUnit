@@ -14,7 +14,7 @@ import CCU.ROSLink 1.0
 ApplicationWindow {
     id: mainWindow
 
-    // visibility: Window.FullScreen
+    visibility: Window.FullScreen
     width: mainWindow.screen.width * 0.5
     height: mainWindow.screen.height * 0.5
 
